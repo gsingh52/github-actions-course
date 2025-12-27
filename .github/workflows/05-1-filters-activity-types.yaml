@@ -6,7 +6,7 @@ on:
       - opened
       - synchronize
     branches:
-      -main
+      - main
             
 jobs:
   echo:

@@ -19,4 +19,5 @@ jobs:
           echo "Run number: ${{github.run_number}}"
 
       - name: Retrieve Variable
-        run: echo "Variable Value: ${{vars.MY_VAR}}"   #this is user defined and created manually in repository
+        run: |
+          echo "Variable Value: ${{vars.MY_VAR}}"   #this is user defined and created manually in repository

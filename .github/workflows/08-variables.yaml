@@ -46,14 +46,14 @@ jobs:
     steps:
       - name: Print Variables
         run: |
-          echo "Org Var: vars-dot-ORV_VAR"   #dummy echo since I dont have Org
+          echo "Org Var: var-dot-ORV_VAR"   #dummy echo since I dont have Org
           echo "Org overwritten: var-dot-OVERWRITTEN_VAR"
           echo "Repo var: ${{vars.REPOSITORY_VAR}}"
-          echo: Environment var: ${{vars.TARGET_VAR}}
+          echo "Environment var: ${{vars.TARGET_VAR}}""
   echo-undefined:                                           # job for undefined varilable, declared on top under workflow env
     runs-on: ubuntu-latest
     steps:
       - name: Print undefined variables
         run: |
           echo "Org var: ${{env.UNDEFINED_VAR_WITH_DEFAULT}}"
-          
+

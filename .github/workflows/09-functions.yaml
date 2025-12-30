@@ -9,6 +9,16 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
+      - name: Print PR title
+        run: echo "${{github.event.pull_request.title}}"
+      - name: Print PR labels
+        run: |
+          cat << EOF
+          ${{toJSON(github.event.pull_request.labels)}}     #print all labels from the pull request in json string format
+          EOF
+      - name: Bug step
+        if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix')}} #if not cancelled and title of PR contains fix
+        run: echo "I am a bug fix"
       - name: Sleep for 20 seconds
         run: sleep 20                # pause the run to be able to cancel the workflow after triggering it
       - name: Failing step

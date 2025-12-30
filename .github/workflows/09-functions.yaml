@@ -1,7 +1,7 @@
 name: 09 - Using Functions
 
 on:
-  pull_request:
+  #pull_request:
   workflow_dispatch:
 
 
@@ -19,14 +19,14 @@ jobs:
       - name: Bug step
         if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix')}} #if not cancelled and title of PR contains fix
         run: echo "I am a bug fix"
-      - name: Sleep for 20 seconds
-        run: sleep 20                # pause the run to be able to cancel the workflow after triggering it
-      - name: Failing step
-        run: exit 1                  #simple exit with non-zero code
-      - name: I will be skipped
+      #- name: Sleep for 20 seconds
+       # run: sleep 20                # pause the run to be able to cancel the workflow after triggering it
+      #- name: Failing step
+       # run: exit 1                  #simple exit with non-zero code
+      - name: I will execute         # earlier it was be skipped
         if: ${{success()}}           #execute only if its successful (previous step)
         run: echo "I will print if previous steps succeed"
-      - name: I will execute
+      - name: I will be skipped    #execute with exit 1 above
         if: ${{failure()}}           #execute if previous step fails
         run: echo "I will print if any previous step fails"
       - name: I will execute

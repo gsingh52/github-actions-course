@@ -9,6 +9,8 @@ jobs:
   echo1:
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 20 seconds
+        run: sleep 20                # pause the run to be able to cancel the workflow after triggering it
       - name: Failing step
         run: exit 1                  #simple exit with non-zero code
       - name: I will be skipped

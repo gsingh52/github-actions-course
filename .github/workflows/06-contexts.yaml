@@ -47,6 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Env variables
+        env:
+          MY_OVERWRITTEN_VAR: 'echo-data2 step'
         run: |
           echo "Workflow env: $MY_WORKFLOW_VAR"
           echo "Overwritten env: $MY_OVERWRITTEN_VAR"

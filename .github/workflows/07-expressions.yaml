@@ -1,4 +1,5 @@
 name: 07 - Using Expressions
+run-name: 07 - Using Expressions | DEBUG - ${{inputs.debug && 'ON' || 'OFF'}} #if input debug not on, default is off, if debug is on then its logical and to second expression which is ON
 
 on:
   push:

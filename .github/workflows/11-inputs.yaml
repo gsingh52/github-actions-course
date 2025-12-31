@@ -8,7 +8,7 @@ on:
         description: "Skip deployment and only print build output"
         default: false
       target:
-        type: environment
+        type: environment                                 # the environments we created in repo settings prod and staging
         required: true
         description: "Which environment the workflow will target"
       tag:
@@ -30,6 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !inputs.dry-run }}
     environment: ${{inputs.target}}
+    needs: build                   # or with multiple needs use - xxx in next line
     steps:
       - name: Deploy
         run: echo "Deploying to ${{inputs.target}}"

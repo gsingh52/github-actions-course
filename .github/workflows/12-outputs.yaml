@@ -21,7 +21,7 @@ jobs:
       
       - name: Build
         id: build
-        run: echo "status= ${{inputs.build-status}}" >> "$GITHUB_OUTPUT"      # key/value appended to the file referenced by github output variable
+        run: echo "status=${{inputs.build-status}}" >> "$GITHUB_OUTPUT"      # key/value appended to the file referenced by github output variable
                                                                             # status/success
   
   deploy:

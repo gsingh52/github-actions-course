@@ -7,6 +7,14 @@ on:
         description: whether to execute cache step
         type: boolean
         default: true
+      node-version:
+        description: Node Version
+        type: choice
+        options:
+          - 18.x
+          - 20.x
+          - 21.x
+        default: 20.x
             
 jobs:
   build:
@@ -20,13 +28,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: ${{inputs.node-version}}
       - name: Install dependencies
         run: npm ci
       - name: Testing
         run: npm run test
       - name: Building
-        run: run build
+        run: npm run build
       - name: Depoying to nonprod
         run: echo "Deploying to nonprod"
 

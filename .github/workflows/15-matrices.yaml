@@ -9,16 +9,31 @@ jobs:
     name: ${{matrix.os}}-${{matrix.node-version}}
     runs-on: ${{matrix.os}}                           # old ubuntu-latest
     strategy:                           # define strategy and matix values, syntax
+      fail-fast: false             # false: when one job fails, other jobs will continue, with default true, other jobs fail too
       matrix:
         node-version: ['18.x', '20.x', '21.x']
         os:
             - ubuntu-latest
             - windows-latest
+        include:                   # allows to extend the configuration, in this case assign 16.x to ubuntu only and not windows
+          - os: ubuntu-latest
+            node-version: '16.x'   # allows specific limited values and not to all OS
+          - os: ubuntu-latest
+            node-version: '21.x'
+            tag: experimental       # add a matrix.tag , use this tag further.
+
     steps:
-     - name: Setup node
-       uses: actions/setup-node@v4
-       with: 
-        node-version: ${{matrix.node-version}}
-     - name: Peform some tests
-       run: echo "Runngs tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: ${{matrix.node-version}}
+      - name: Fail if experimental
+        if: matrix.tag == 'experimental'
+        run: exit 1
+      - name: Peform some tests
+        run: |
+          echo "Runngs tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
+          sleep 10
+      - name: Upload test results
+        run: echo "Uploading test results"
      

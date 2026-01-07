@@ -32,7 +32,19 @@ jobs:
       - name: Peform some tests
         run: |
           echo "Runngs tests on OS ${{matrix.os}} and NodeJS ${{matrix.node-version}}"
-          sleep 10
+          
       - name: Upload test results
         run: echo "Uploading test results"
+  
+  include-example:
+    name: ${{matrix.color}}-${{matix.shape}}-${{matix.size}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        color: [red,green]
+        shape: [circle, square]
+        size: [samll,large]
+        include:
+          - color: red
+          - shape: triangle
      

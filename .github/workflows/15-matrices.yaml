@@ -49,7 +49,7 @@ jobs:
           - color: red
             opacity: 75
           - shape: circle
-            opacity: 100
+            opacity: 100           # this is last in order, so this value will have priority
           - color: red
             shape: triangle
     steps:

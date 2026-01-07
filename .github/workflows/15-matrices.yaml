@@ -6,10 +6,10 @@ on:
 
 jobs:
   backwards-compatibility:
-    name: ${{matrix.os}}-${{matrix.node-version}}
+    name: ${{matrix.os}}-${{matrix.node-version}}  # name of the particular combination version
     runs-on: ${{matrix.os}}                           # old ubuntu-latest
     strategy:                           # define strategy and matix values, syntax
-      fail-fast: false             # false: when one job fails, other jobs will continue, with default true, other jobs fail too
+      fail-fast: true             # false: when one job fails, other jobs will continue,  by default its true, so other jobs fail too
       matrix:
         node-version: ['18.x', '20.x', '21.x']
         os:
@@ -21,7 +21,6 @@ jobs:
           - os: ubuntu-latest
             node-version: '21.x'
             tag: experimental       # add a matrix.tag , use this tag further.
-
     steps:
       - name: Setup node
         uses: actions/setup-node@v4

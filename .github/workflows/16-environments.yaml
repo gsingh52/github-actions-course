@@ -1,4 +1,5 @@
 name: 16 - Working with Environments
+run-name: 16 - Working with Environments | env - ${{inputs.target-env}}
 
 on:
   workflow_dispatch:
@@ -12,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{inputs.target-env}}
     env:
-      my-env-value: ${{vars.MY_ENV_VALUE || 'default value'}}      # if MY_ENV_VALUE not defined, then default value
+      my-env-value: ${{vars.MY_ENV_VALUE || 'default value'}}      # MY_ENV_VALUE is defined in github prod env. if not then default
     steps:
       - name: Echo vars
         run: |

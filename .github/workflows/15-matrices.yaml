@@ -37,7 +37,7 @@ jobs:
         run: echo "Uploading test results"
   
   include-example:
-    name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}-$${{matrix.opacity}}
+    name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}-${{matrix.opacity}}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -45,7 +45,7 @@ jobs:
         shape: [circle, square]
         size: [samll,large]
         include:
-          - opacity: 50
+          - opacity: 50               # This will be added to all combinations with value 50
           - color: red
             shape: triangle
     steps:

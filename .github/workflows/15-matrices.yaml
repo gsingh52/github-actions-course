@@ -46,7 +46,7 @@ jobs:
         size: [samll,large]
         include:
           - color: red
-          - shape: triangle
+            shape: triangle
     steps:
       - name: Dummy Step
         run: echo "${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}"

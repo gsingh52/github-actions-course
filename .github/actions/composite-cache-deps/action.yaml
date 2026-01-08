@@ -10,6 +10,11 @@ inputs:
     description: The working directory of the application
     default: .
     required: false
+  target-env:
+    description: '"dev" or "prod". Controls whether dev dependencies are installed'
+    default: dev
+    required: false
+
 runs:
   using: composite
   steps:
@@ -25,6 +30,7 @@ runs:
         key: node-modules-${{hashFiles(format('{0}/{1}',inputs.working-dir, 'package-lock.json'))}} #format function to evaluate values correctly
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci 
+      run: ${{inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev'}} # if target-env is dev run npm ci or else with omit 
       shell: bash                       # whenever within a composite action, provide shell step 
       working-directory: ${{inputs.working-dir}}   # provide working directory as well for composite
+    

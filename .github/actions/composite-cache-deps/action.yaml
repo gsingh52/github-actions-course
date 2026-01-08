@@ -25,6 +25,6 @@ runs:
         key: node-modules-${{hashFiles('${{inputs.working-dir}}/package-lock.json')}}
     - name: Install Dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: nmp ci 
+      run: npm ci 
       shell: bash                       # whenever within a composite action, provide shell step 
       working-directory: ${{inputs.working-dir}}   # provide working directory as well for composite

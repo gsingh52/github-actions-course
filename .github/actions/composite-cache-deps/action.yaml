@@ -16,7 +16,7 @@ inputs:
     required: false
 
 runs:
-  using: composite
+  using: composite     # runs/using - syntac of custom composite action
   steps:
     - name: Setup NodeJS version ${{inputs.node-version}}
       uses: actions/setup-node@v4

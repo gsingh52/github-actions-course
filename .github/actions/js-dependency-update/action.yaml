@@ -1,0 +1,6 @@
+name: Update NPM Dependencies
+description: Checks if there are updates to NPM packages, and create a PR with the updated packages*.json files.
+
+runs:
+  using: node20       # runs/using: Syntax of custom javascript action, node version
+  main: index.js      # contains logic for custom javascript action

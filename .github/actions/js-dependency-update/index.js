@@ -1,5 +1,5 @@
 const core = require('@actions/core')   /* to get inputs */
-const exec = requrie('@actions/exec')   /* to run command line scripts/commands */
+const exec = require('@actions/exec')   /* to run command line scripts/commands */
 
 const validateBranchName = ({branchName}) => /^[a-zA-Z0-9_\-\.\/]+$/.test(branchName); /*RegEx.test, if matches then return tru else false */
 const validateDirectoryName = ({dirName}) => /^[a-zA-Z0-9_\-\/]+$/.test(dirName);

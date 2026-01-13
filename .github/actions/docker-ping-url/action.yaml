@@ -1,0 +1,20 @@
+name: Ping URL
+desctription: Ping URL until maximum trials have exceeded. If result is not 200 until then, fail the action.
+
+inputs:
+  url:
+    description: URL to ping.
+    required: true
+  max_trials:
+    description: maximum number of trials until action fails
+    defulat: '10'
+    required: false
+  delay:
+    description: Delay in seconds between trials
+    defult: '5'
+    required: false
+
+runs:
+  using: docker
+  image: Dockerfile  # it could ref public docker register or certain container. workflow will look for this dockerfile in this location
+

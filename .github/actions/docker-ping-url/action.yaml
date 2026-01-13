@@ -2,16 +2,16 @@ name: Ping URL
 desctription: Ping URL until maximum trials have exceeded. If result is not 200 until then, fail the action.
 
 inputs:
-  url:
+  url:                    # INPUT_URL
     description: URL to ping.
     required: true
-  max_trials:
+  max_trials:             # in main.py INPUT_MAX_TRIALS
     description: maximum number of trials until action fails
-    defulat: '10'
+    default: '10'         
     required: false
   delay:
     description: Delay in seconds between trials
-    defult: '5'
+    default: '5'
     required: false
 
 runs:

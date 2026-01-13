@@ -6,7 +6,7 @@ inputs:
     description: The branch used as the base for dependency update Checks
     default: main
     required: false
-  target-branch:
+  head-branch:
     description: The branch from which the PR is created   # PR - Pull Request
     default: update-Dependencies
     required: false

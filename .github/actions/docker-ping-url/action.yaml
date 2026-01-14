@@ -14,6 +14,10 @@ inputs:
     default: '5'
     required: false
 
+outputs:
+  url-reachable:
+    description: Whether the URL is reachable
+
 runs:
   using: docker
   image: Dockerfile  # it could ref public docker register or certain container. workflow will look for this dockerfile in this location

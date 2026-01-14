@@ -15,6 +15,14 @@ inputs:
     default: dev
     required: false
 
+outputs:                              # Added outputs to be used and then remove some steps in runs
+  installed_deps:
+    description: whether dependencies were installed or not 
+    value: ${{steps.cache.outputs.cache-hit != 'true'}}
+  #random-output
+   # description: Some value
+    #value: ${{steps.random-output.outputs.random}}
+
 runs:
   using: composite     # runs/using - syntac of custom composite action
   steps:
@@ -33,4 +41,9 @@ runs:
       run: ${{inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev'}} # if target-env is dev run npm ci or else with omit 
       shell: bash                       # whenever within a composite action, provide shell step 
       working-directory: ${{inputs.working-dir}}   # provide working directory as well for composite
+
+    #- name: Random output
+     # shell: bash
+      #id: random-output
+      #run: echo "random=123" >> "$GITHUB_OUTPUT"
     

@@ -19,6 +19,10 @@ inputs:
   debug:
     description: Whether the output debug messages to the console
     default: 'false'
+  
+outputs:
+  updates-available:
+    description: Whether there are updates available
 
 runs:
   using: node20       # runs/using: Syntax of custom javascript action, node version

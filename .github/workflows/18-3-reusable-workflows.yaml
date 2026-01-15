@@ -10,6 +10,7 @@ jobs:
       target-directory: dummy-dir
   e2etests:
     uses: gsingh52/github-actions-course-example-e2e/.github/workflows/e2e.yaml@main #<owner>/<repo>/.github/workflows/<workflow_name>@<version>
+    needs: deploy
     secrets:
       access-token: ${{secrets.GH_TOKEN}}  #this is the PAT we defined in the settings and not the default github
 

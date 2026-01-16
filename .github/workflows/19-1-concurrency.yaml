@@ -1,0 +1,20 @@
+name: 19.1 - Managing Concurrency 
+
+on:
+  workflow_dispatch:
+
+concurrency:                                      # Define concurrency at workflow level
+  group: ${{github.workflow}}-${{ github.ref}}    # define concurrency group,  restricted to currenct WF and branch (ref)
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ping URL
+        id: ping-url
+        uses: ./.github/actions/docker-ping-url
+        with:
+          url: http://www.invalid-ddd.com
+          max_trials: 20
+          delay: 5
